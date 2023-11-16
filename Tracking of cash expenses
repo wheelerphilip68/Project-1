@@ -1,0 +1,43 @@
+class ExpenseTracker:
+    def __init__(self):
+        self.expenses = []
+
+    def add_expense(self, category, amount):
+        self.expenses.append({'category': category, 'amount': amount})
+
+    def view_expenses(self):
+        total_expenses = 0
+        print("\nExpense Summary:")
+        print("----------------------------")
+        for expense in self.expenses:
+            print(f"{expense['category']}: ${expense['amount']}")
+            total_expenses += expense['amount']
+        print("----------------------------")
+        print(f"Total Expenses: ${total_expenses}\n")
+
+def main():
+    tracker = ExpenseTracker()
+
+    while True:
+        print("Expense Tracker Menu:")
+        print("1. Add Expense")
+        print("2. View Expenses")
+        print("3. Exit")
+
+        choice = input("Enter your choice (1/2/3): ")
+
+        if choice == '1':
+            category = input("Enter expense category: ")
+            amount = float(input("Enter expense amount: "))
+            tracker.add_expense(category, amount)
+            print("Expense added successfully!\n")
+        elif choice == '2':
+            tracker.view_expenses()
+        elif choice == '3':
+            print("Exiting Expense Tracker. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter 1, 2, or 3.\n")
+
+if __name__ == "__main__":
+    main()
